@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>JEMNexaVA | Virtual Assistant for Founders and Coaches</title>
+<meta name="description" content="Reliable virtual assistant support for founders, coaches, and small businesses, including social media management, administrative support, lead generation, and email marketing.">
+<meta name="theme-color" content="#010736">
+<meta property="og:title" content="JEMNexaVA | Virtual Assistant Support">
+<meta property="og:description" content="Virtual assistant support for social media, admin, lead generation and email marketing.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://jesyka-star.github.io/jemnexava/img/b4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JEMNexaVA | Virtual Assistant Support">
+<meta name="twitter:description" content="Virtual assistant support for social media, admin, lead generation and email marketing.">
+<meta name="twitter:image" content="https://jesyka-star.github.io/jemnexava/img/b4.jpg">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+/* Layout concept: left-aligned editorial luxury. Navy ground, gold hairlines, an arched portrait in the hero,
+   services as a ruled list instead of cards, one raised pricing tier. Dark-first with a cream light theme. */
+:root {
+  --bg: #010736;
+  --bg-2: #0d1c42;
+  --bg-3: #22396f;
+  --ink: #fbf3dc;
+  --ink-soft: #b9bfd6;
+  --gold: #ffc300;
+  --error-text: #ffcf9b;
+  --gold-text: #ffc300;
+  --on-gold: #010736;
+  --line: rgba(255, 195, 0, 0.28);
+  --line-soft: rgba(251, 243, 220, 0.14);
+  --glow: rgba(34, 57, 111, 0.55);
+  --font-display: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+  --font-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #fcf1d0; --bg-2: #f6e8bd; --bg-3: #ecd990; --error-text: #8b1e16;
+    --ink: #010736; --ink-soft: #3a4670; --gold-text: #7a5800;
+    --line: rgba(1, 7, 54, 0.28); --line-soft: rgba(1, 7, 54, 0.14); --glow: rgba(255, 195, 0, 0.35);
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #fcf1d0; --bg-2: #f6e8bd; --bg-3: #ecd990; --error-text: #8b1e16;
+  --ink: #010736; --ink-soft: #3a4670; --gold-text: #7a5800;
+  --line: rgba(1, 7, 54, 0.28); --line-soft: rgba(1, 7, 54, 0.14); --glow: rgba(255, 195, 0, 0.35);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+body {
+  margin: 0;
+  overflow-wrap: break-word;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.05; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.wrap { max-width: 72rem; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.band { padding-block: clamp(4rem, 9vw, 7.5rem); }
+.band-alt { background: var(--bg-2); }
+.eyebrow { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-text); font-weight: 600; }
+.lede { color: var(--ink-soft); max-width: 38rem; }
+.h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+.h2 em, h1 em { font-style: italic; color: var(--gold-text); font-weight: 400; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; font: 600 .86rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; padding: 1.05rem 1.7rem; border: 1px solid var(--gold); border-radius: 2px; cursor: pointer; transition: background .25s, color .25s, transform .25s; }
+.btn-gold { background: var(--gold); color: var(--on-gold); }
+.btn-gold:hover { transform: translateY(-2px); background: #ffd23d; }
+.btn-line { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-line:hover { border-color: var(--gold); color: var(--gold-text); }
+
+/* Header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line-soft); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .9rem; }
+.mark { font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; text-decoration: none; letter-spacing: .01em; }
+.mark span { color: var(--gold-text); font-style: italic; }
+.nav { display: flex; align-items: center; gap: 1.9rem; }
+.nav a:not(.btn) { text-decoration: none; font-size: .9rem; letter-spacing: .06em; color: var(--ink-soft); transition: color .2s; }
+.nav a:not(.btn):hover { color: var(--gold-text); }
+.nav .btn { padding: .8rem 1.2rem; font-size: .75rem; }
+.menu-toggle { display: none; border: 1px solid var(--line); color: var(--ink); background: transparent; width: 44px; height: 44px; padding: 10px; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 5px; }
+.menu-toggle span { display: block; width: 20px; height: 2px; background: currentColor; transition: transform .2s, opacity .2s; }
+.menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(7px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 52rem) {
+  .top .wrap { position: relative; }
+  .menu-toggle { display: inline-flex; flex: 0 0 auto; }
+  .nav { display: none; position: absolute; inset: 100% 16px auto 16px; z-index: 25; padding: 1rem; flex-direction: column; align-items: stretch; gap: .25rem; background: var(--bg-2); border: 1px solid var(--line); box-shadow: 0 1rem 2rem rgba(0,0,0,.22); }
+  .nav.is-open { display: flex; }
+  .nav a:not(.btn) { display: block; padding: .75rem .5rem; }
+  .nav .btn { margin-top: .5rem; min-height: 44px; }
+}
+
+/* Hero */
+.hero { padding-block: clamp(2.5rem, 6vw, 5rem) clamp(4rem, 8vw, 7rem); background: radial-gradient(60rem 36rem at 85% 20%, var(--glow), transparent 70%); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+.hero h1 { font-size: clamp(2.9rem, 7.4vw, 5.6rem); margin-block: 1.2rem 1.6rem; }
+.hero .lede { font-size: 1.15rem; }
+.cta-row { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2.2rem; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; margin-top: 2.6rem; padding-top: 1.4rem; border-top: 1px solid var(--line-soft); font-size: .86rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.hero-meta span::before { content: ""; display: inline-block; width: .45rem; height: .45rem; margin-right: .6rem; background: var(--gold); transform: rotate(45deg); }
+.portrait { position: relative; justify-self: end; width: min(100%, 26rem); }
+.portrait::before { content: ""; position: absolute; inset: -.45rem; border: 1px solid var(--gold); border-radius: 999px 999px 0 0; }
+.portrait img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 1 / 1.08; object-fit: cover; object-position: 50% 50%; border-radius: 999px 999px 0 0; }
+.portrait figcaption { position: absolute; left: -1rem; bottom: 2rem; z-index: 2; background: var(--bg); border: 1px solid var(--line); padding: .8rem 1.1rem; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+@media (max-width: 52rem) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  .portrait { justify-self: start; width: min(88%, 22rem); margin-top: 1rem; }
+  .portrait::before { inset: -.35rem; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.hero-copy > * { animation: rise .75s cubic-bezier(.2,.7,.2,1) both; }
+.hero-copy > *:nth-child(2) { animation-delay: .08s; }
+.hero-copy > *:nth-child(3) { animation-delay: .16s; }
+.hero-copy > *:nth-child(4) { animation-delay: .24s; }
+.hero-copy > *:nth-child(5) { animation-delay: .32s; }
+.hero .portrait { animation: rise .9s cubic-bezier(.2,.7,.2,1) .18s both; }
+.portrait img { transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.portrait:hover img { transform: scale(1.012); }
+.tier { transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+.tier:hover { transform: translateY(-5px); border-color: var(--gold); }
+.service h3 { transition: color .25s ease; }
+.service:hover h3 { color: var(--gold-text); }
+/* Scroll reveal for lower sections. The class is added by JavaScript only when motion is allowed. */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .68s cubic-bezier(.2,.7,.2,1), transform .68s cubic-bezier(.2,.7,.2,1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); will-change: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll, .reveal-on-scroll.is-visible { opacity: 1 !important; transform: none !important; transition: none !important; will-change: auto !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* Services */
+.band:not(.band-alt) + .band:not(.band-alt) { border-top: 1px solid var(--line-soft); }
+.flow-tabs { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2rem; }
+.flow-tab { font: 600 .82rem/1 var(--font-body); letter-spacing: .1em; text-transform: uppercase; padding: .85rem 1.2rem; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink-soft); cursor: pointer; transition: border-color .2s, color .2s, background .2s; }
+.flow-tab:hover { border-color: var(--gold); color: var(--ink); }
+.flow-tab[aria-selected="true"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.flow-tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.flow-sub { color: var(--ink-soft); margin: 0 0 2.6rem; font-family: var(--font-display); font-style: italic; font-size: 1.35rem; }
+.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); counter-reset: f; }
+.flow li { position: relative; padding: 2.4rem 1.4rem 0 0; border-top: 1px solid var(--line); min-width: 0; }
+.flow li::before { counter-increment: f; content: counter(f, decimal-leading-zero); position: absolute; top: -1.05rem; left: 0; width: 2.1rem; height: 2.1rem; display: grid; place-items: center; background: var(--bg); border: 1px solid var(--gold); border-radius: 50%; color: var(--gold-text); font: 600 .78rem/1 var(--font-body); }
+.flow h3 { font-size: 1.55rem; margin-bottom: .5rem; }
+.flow p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+@media (max-width: 52rem) {
+  .flow { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .flow li { border-top: 0; border-left: 1px solid var(--line); padding: 0 0 1.8rem 2.2rem; margin-left: 1.05rem; }
+  .flow li:last-child { padding-bottom: 0; }
+  .flow li::before { left: -1.05rem; top: -.2rem; }
+}
+.samples { display: grid; gap: 2rem; }
+.sample { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; padding: clamp(1.2rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: 18px; background: var(--bg); }
+.sample-shot { display: block; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 1.4rem 2.6rem -1.4rem rgba(0,0,0,.6); transition: transform .3s ease; }
+.sample-shot:hover { transform: translateY(-4px); }
+.sample-shot:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.sample-shot img { display: block; width: 100%; height: auto; }
+.sample-body { min-width: 0; display: grid; gap: 1rem; justify-items: start; }
+.sample-kind { margin: 0; font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-text); font-weight: 600; }
+.sample-body h3 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
+.sample-body > p { margin: 0; color: var(--ink-soft); }
+.sample-points { margin: 0; padding: 0; list-style: none; display: grid; gap: .55rem; }
+.sample-points li { position: relative; padding-left: 1.3rem; font-size: .95rem; }
+.sample-points li::before { content: ""; position: absolute; left: 0; top: .55em; width: .45rem; height: .45rem; background: var(--gold); transform: rotate(45deg); }
+@media (max-width: 52rem) { .sample { grid-template-columns: minmax(0, 1fr); } }
+.sample-flip .sample-body { order: 1; }
+.sample-flip .cal { order: 2; }
+.sample-flip .cal-all { order: 3; grid-column: 1 / -1; }
+.cal { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg-2); min-width: 0; }
+.cal-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: .9rem 1.2rem; background: var(--gold); color: var(--on-gold); font: 600 .74rem/1.2 var(--font-body); letter-spacing: .16em; text-transform: uppercase; }
+.cal-list { list-style: none; margin: 0; padding: 0; }
+.cal-list li { display: grid; grid-template-columns: 4.2rem minmax(0, 1fr); gap: .15rem 1rem; padding: .85rem 1.2rem; border-top: 1px solid var(--line-soft); }
+.cal-list li:first-child { border-top: 0; }
+.cal-day { grid-row: span 2; font: 600 .74rem/1.6 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); font-variant-numeric: tabular-nums; }
+.cal-hook { font-size: .95rem; line-height: 1.4; }
+.cal-meta { font-size: .78rem; color: var(--ink-soft); }
+.cal-all summary { cursor: pointer; display: inline-flex; align-items: center; gap: .6rem; font: 600 .82rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--ink); padding: .95rem 1.4rem; border: 1px solid var(--line); list-style: none; }
+.cal-all summary::-webkit-details-marker { display: none; }
+.cal-all summary::after { content: "+"; color: var(--gold-text); font-size: 1.1rem; }
+.cal-all[open] summary::after { content: "–"; }
+.cal-all summary:hover, .cal-all summary:focus-visible { border-color: var(--gold); outline: none; }
+.cal-scroll { margin-top: 1.2rem; overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+.cal-scroll table { width: 100%; min-width: 46rem; border-collapse: collapse; font-size: .9rem; }
+.cal-scroll th { text-align: left; padding: .8rem 1rem; background: var(--bg-2); color: var(--gold-text); font: 600 .72rem/1.2 var(--font-body); letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
+.cal-scroll td { padding: .75rem 1rem; border-top: 1px solid var(--line-soft); vertical-align: top; }
+.cal-scroll td:first-child { color: var(--gold-text); font-variant-numeric: tabular-nums; font-weight: 600; }
+.cal-scroll td:nth-child(3) { color: var(--ink-soft); }
+.cal-scroll td:nth-child(4), .cal-scroll td:nth-child(5) { white-space: nowrap; color: var(--ink-soft); font-size: .82rem; }
+@media (max-width: 52rem) { .sample-flip .cal { order: 2; } }
+.sample-static { margin: 0; background: #fff; }
+.sample-static:hover { transform: none; }
+.seq { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.seq li { display: inline-flex; align-items: center; gap: .5rem; padding: .45rem .85rem .45rem .45rem; border: 1px solid var(--line); border-radius: 999px; font-size: .85rem; }
+.seq span { display: grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--gold); color: var(--on-gold); font: 700 .72rem/1 var(--font-body); }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: .4rem 0 0; width: 100%; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.stats div { background: var(--bg-2); padding: .9rem 1rem; min-width: 0; }
+.stats dt { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.stats dd { margin: .3rem 0 0; font-family: var(--font-display); font-size: 2rem; line-height: 1; color: var(--gold-text); font-variant-numeric: tabular-nums; }
+.stats-note { margin: 0; font-size: .8rem; color: var(--ink-soft); }
+.sample-flip .sample-tall { order: 2; }
+.sample-tall { max-height: 30rem; background: #fafafa; }
+.sample-tall img { object-fit: cover; object-position: top; height: 100%; }
+.sample-links { display: flex; flex-wrap: wrap; gap: .7rem; }
+.tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 2.2rem 2.6rem; }
+.tool-group { min-width: 0; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+.tool-group h3 { font-family: var(--font-body); font-size: .74rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-text); margin-bottom: .9rem; }
+.tool-group ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.tool-group li { padding: .45rem .9rem; border: 1px solid var(--line-soft); border-radius: 999px; background: var(--bg-2); font-size: .9rem; }
+.section-head { display: grid; gap: 1rem; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+.services { border-top: 1px solid var(--line); }
+.service { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 1rem clamp(1.5rem, 5vw, 4rem); padding-block: clamp(1.6rem, 3.4vw, 2.6rem); border-bottom: 1px solid var(--line); }
+.service h3 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+.service p { color: var(--ink-soft); margin-bottom: 1rem; max-width: 34rem; }
+.tags { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0; list-style: none; }
+.tags li { border: 1px solid var(--line); padding: .35rem .8rem; font-size: .84rem; letter-spacing: .04em; }
+@media (max-width: 46rem) { .service { grid-template-columns: minmax(0, 1fr); } }
+
+/* Process */
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: s; }
+.step { position: relative; padding: 2.4rem 1.6rem 0 0; border-top: 1px solid var(--line); }
+.step::before { counter-increment: s; content: counter(s); position: absolute; top: -1.05rem; left: 0; width: 2.1rem; height: 2.1rem; display: grid; place-items: center; background: var(--gold); color: var(--on-gold); font-weight: 600; font-size: .95rem; border-radius: 50%; }
+.step h3 { font-size: 1.7rem; margin-bottom: .6rem; }
+.step p { color: var(--ink-soft); font-size: .98rem; }
+@media (max-width: 62rem) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 3rem; } }
+@media (max-width: 34rem) { .steps { grid-template-columns: minmax(0, 1fr); } }
+
+/* Pricing */
+.tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; align-items: stretch; }
+.tier { position: relative; display: flex; flex-direction: column; gap: 1.2rem; padding: 2.2rem 1.9rem; border: 1px solid var(--line); background: var(--bg); border-radius: 2px; }
+.tier.pick { border-color: var(--gold); background: linear-gradient(180deg, var(--bg-3), var(--bg)); box-shadow: 0 1.6rem 3rem -1.2rem rgba(0,0,0,.55); }
+@media (min-width: 62.01rem) { .tier.pick { margin-block: -1.2rem; padding-block: 3.4rem; } }
+.badge { position: absolute; top: 0; left: 1.9rem; transform: translateY(-50%); background: var(--gold); color: var(--on-gold); padding: .35rem .8rem; font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.tier h3 { font-size: 2rem; }
+.tier .for { color: var(--ink-soft); font-size: .95rem; min-height: 3em; }
+.price { font-family: var(--font-display); font-size: 3.6rem; line-height: 1; font-weight: 500; font-variant-numeric: lining-nums; }
+.price small { font-family: var(--font-body); font-size: .9rem; color: var(--ink-soft); margin-left: .3rem; }
+.hours { font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-text); font-weight: 600; margin-top: -.6rem; }
+.tier ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .7rem; flex: 1; border-top: 1px solid var(--line-soft); padding-top: 1.3rem; }
+.tier li { padding-left: 1.5rem; position: relative; font-size: .97rem; }
+.tier li::before { content: ""; position: absolute; left: 0; top: .62rem; width: .75rem; height: 1px; background: var(--gold); }
+.tier .btn { width: 100%; }
+.fine { margin-top: 2.6rem; color: var(--ink-soft); font-size: .92rem; max-width: 46rem; }
+@media (max-width: 62rem) { .tiers { grid-template-columns: minmax(0, 1fr); max-width: 30rem; } .tier.pick { order: -1; margin-top: .8rem; } }
+
+/* About */
+.about .wrap { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+.about img { display: block; width: 100%; height: auto; max-width: 24rem; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border: 1px solid var(--line); padding: .7rem; background: var(--bg); }
+.about p + p { margin-top: 1rem; }
+.values { display: flex; flex-wrap: wrap; gap: 1rem 2.4rem; margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--line-soft); }
+.values div { font-family: var(--font-display); font-size: 1.5rem; font-style: italic; color: var(--gold-text); }
+@media (max-width: 52rem) { .about .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+/* FAQ */
+.faq { border-top: 1px solid var(--line); max-width: 52rem; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 1.4rem 2.5rem 1.4rem 0; font-family: var(--font-display); font-size: 1.6rem; position: relative; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: .3rem; top: 50%; transform: translateY(-50%); font-family: var(--font-body); font-size: 1.5rem; color: var(--gold-text); }
+.faq details[open] summary::after { content: "\2212"; }
+.faq details p { color: var(--ink-soft); padding-bottom: 1.5rem; max-width: 40rem; }
+
+/* Contact */
+.contact .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); }
+.contact h2 { font-size: clamp(2.4rem, 5.6vw, 4.2rem); }
+.reach { display: grid; gap: 1.2rem; margin-top: 2.2rem; }
+.reach dt { font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-text); font-weight: 600; margin-bottom: .2rem; }
+.reach dd { margin: 0; overflow-wrap: anywhere; }
+.copy { margin-left: .6rem; font: 600 .72rem/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; background: none; border: 1px solid var(--line); color: var(--ink); padding: .4rem .7rem; cursor: pointer; }
+.copy:hover { border-color: var(--gold); color: var(--gold-text); }
+.contact .wrap { align-items: center; }
+.contact-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 2.4rem; }
+.book-now { display: inline-flex; align-items: center; gap: .9rem; padding: .45rem .45rem .45rem 1.5rem; border-radius: 999px; background: var(--cream, #fcf1d0); color: #0d1c42; font: 800 .95rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; transition: transform .25s ease, box-shadow .25s ease; }
+.book-now:hover { transform: translateY(-2px); box-shadow: 0 .8rem 1.6rem -.8rem rgba(0,0,0,.6); }
+.book-now:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.book-arrow { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: #22396f; color: #fcf1d0; box-shadow: 3px 3px 0 var(--gold); }
+.reach-card { padding: clamp(1.4rem, 3vw, 2.4rem); border: 1px solid var(--gold); border-radius: 18px; background: var(--bg-2); min-width: 0; }
+.reach-card .reach { margin-top: 0; }
+.reach dd a { color: var(--ink); text-decoration: none; font-size: clamp(1rem, 1.8vw, 1.3rem); }
+.reach dd a:hover { color: var(--gold-text); }
+.socials { list-style: none; display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.8rem 0 0; padding: 0; }
+.socials a { display: inline-flex; align-items: center; gap: .5rem; padding: .55rem .95rem; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); text-decoration: none; font-size: .85rem; letter-spacing: .04em; transition: border-color .2s, color .2s; }
+.socials a:hover, .socials a:focus-visible { border-color: var(--gold); color: var(--gold-text); }
+.socials svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+form { display: grid; gap: 1.2rem; padding: clamp(1.4rem, 3vw, 2.2rem); border: 1px solid var(--line); background: var(--bg); border-radius: 2px; }
+.field-error { display: block; margin-top: .35rem; color: var(--error-text); font-size: .9rem; }
+.field-error[hidden] { display: none; }
+input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: var(--error-text); }
+.menu-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.field { display: grid; gap: .4rem; min-width: 0; }
+label { font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; }
+input, select, textarea { width: 100%; font: inherit; color: var(--ink); background: var(--bg-2); border: 1px solid var(--line-soft); border-radius: 2px; padding: .85rem 1rem; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
+textarea { min-height: 7.5rem; resize: vertical; }
+.draft { display: grid; gap: .8rem; }
+.draft[hidden] { display: none; }
+.draft pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; font-size: .95rem; padding: 1rem; background: var(--bg-2); border: 1px dashed var(--gold); }
+.draft .row { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; }
+.note { font-size: .88rem; color: var(--ink-soft); }
+@media (max-width: 52rem) { .contact .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+footer { border-top: 1px solid var(--line); padding-block: 2.4rem; font-size: .9rem; color: var(--ink-soft); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; align-items: baseline; }
+footer .tag { font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--ink); }
+footer .wrap > div:last-child { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; min-width: 0; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--gold-text); }
+</style>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="JEMNexaVA home">JEMNexa<span>VA</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+    <nav class="nav" id="main-nav" aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#work">Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+      <a class="btn btn-gold" href="#contact">Let's connect</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Virtual assistant for founders and coaches</p>
+        <h1>You're doing three jobs in your business. <em>Hand two of them to me.</em></h1>
+        <p class="lede">I run the social media, inbox and daily admin that keep a business moving, so you can spend your hours on clients and growth.</p>
+        <div class="cta-row">
+          <a class="btn btn-gold" href="https://calendly.com/jesykamagalladoraegonio/new-meeting-1" target="_blank" rel="noopener">Book a free call</a>
+          <a class="btn btn-line" href="#services">View services</a>
+        </div>
+        <div class="hero-meta"><span>Social media</span><span>Admin support</span><span>Lead generation</span><span>Email marketing</span></div>
+      </div>
+      <figure class="portrait" style="margin:0">
+        <img src="img/b4.jpg" width="1250" height="1500" alt="Portrait of the founder of JEMNexaVA, smiling in a soft pink blazer">
+        <figcaption>Support behind the scenes</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="band band-alt" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Services</p>
+        <h2 class="h2">The work that keeps <em>everything moving</em></h2>
+        <p class="lede">Choose one area or combine them. Each is handled the same way: clear steps, steady rhythm, and nothing left for you to chase.</p>
+      </div>
+      <div class="services">
+        <article class="service">
+          <h3>Social Media Management</h3>
+          <div>
+            <p>A consistent presence without the daily scramble. Posts are planned, written, designed in Canva and scheduled ahead.</p>
+            <ul class="tags"><li>Plan content</li><li>Write captions</li><li>Create graphics</li><li>Schedule posts</li></ul>
+          </div>
+        </article>
+        <article class="service">
+          <h3>Administrative Support</h3>
+          <div>
+            <p>An inbox you can open without dread and a calendar that matches your week. Files and research stay tidy and easy to find.</p>
+            <ul class="tags"><li>Email management</li><li>Calendar updates</li><li>Organize files</li><li>Data &amp; research</li></ul>
+          </div>
+        </article>
+        <article class="service">
+          <h3>Lead Generation</h3>
+          <div>
+            <p>Researched, verified lists of the people you want to reach, organized and ready for outreach.</p>
+            <ul class="tags"><li>Prospect research</li><li>Verified contacts</li><li>LinkedIn prospecting</li><li>CRM-ready lists</li></ul>
+          </div>
+        </article>
+        <article class="service">
+          <h3>Email Marketing</h3>
+          <div>
+            <p>Newsletters and campaigns that keep your audience warm, set up cleanly and tracked after every send.</p>
+            <ul class="tags"><li>Campaign setup</li><li>List segmentation</li><li>Email copy</li><li>Performance tracking</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="workflow">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Workflows</p>
+        <h2 class="h2">How each service <em>gets done</em></h2>
+        <p class="lede">Every service follows a clear routine, so you always know what happens next.</p>
+      </div>
+      <div class="flow-tabs" role="tablist" aria-label="Choose a service"><button class="flow-tab" type="button" role="tab" id="tab-social" aria-controls="flow-social" aria-selected="true" tabindex="0">Social Media Management</button><button class="flow-tab" type="button" role="tab" id="tab-admin" aria-controls="flow-admin" aria-selected="false" tabindex="-1">Administrative Support</button><button class="flow-tab" type="button" role="tab" id="tab-leads" aria-controls="flow-leads" aria-selected="false" tabindex="-1">Lead Generation</button><button class="flow-tab" type="button" role="tab" id="tab-email" aria-controls="flow-email" aria-selected="false" tabindex="-1">Email Marketing</button></div>
+      <div class="flow-panel" role="tabpanel" id="flow-social" aria-labelledby="tab-social">
+        <p class="flow-sub">From a clear monthly plan to posts that go out on time.</p>
+        <ol class="flow"><li><h3>Plan</h3><p>Agree on your goals, audience and content pillars for the month.</p></li><li><h3>Create</h3><p>Design the graphics in Canva and write captions in your voice.</p></li><li><h3>Approve</h3><p>Send everything to you for review before anything goes live.</p></li><li><h3>Schedule</h3><p>Queue posts for the times your audience is most active.</p></li><li><h3>Review</h3><p>Check engagement each month and adjust the next plan.</p></li></ol>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="flow-admin" aria-labelledby="tab-admin" hidden>
+        <p class="flow-sub">Your inbox, calendar and files kept in order every week.</p>
+        <ol class="flow"><li><h3>Map</h3><p>List your recurring tasks, tools and the access I will need.</p></li><li><h3>Organize</h3><p>Set up inbox labels, folders and calendar rules that fit how you work.</p></li><li><h3>Handle</h3><p>Manage email, scheduling, data entry and follow-ups on a set routine.</p></li><li><h3>Track</h3><p>Log every task in a shared tracker so you can see progress anytime.</p></li><li><h3>Report</h3><p>Send a short weekly update on what is done and what is next.</p></li></ol>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="flow-leads" aria-labelledby="tab-leads" hidden>
+        <p class="flow-sub">From your ideal client profile to a verified, ready-to-use list.</p>
+        <ol class="flow"><li><h3>Define</h3><p>Set your ideal client by industry, role, location and company size.</p></li><li><h3>Source</h3><p>Find matching companies and decision-makers on LinkedIn and prospecting tools.</p></li><li><h3>Verify</h3><p>Check contact details, remove poor fits and clear out duplicates.</p></li><li><h3>Organize</h3><p>Deliver a clean list in Google Sheets or your CRM, with source links.</p></li><li><h3>Track</h3><p>Update lead status and notes so your follow-up stays on schedule.</p></li></ol>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="flow-email" aria-labelledby="tab-email" hidden>
+        <p class="flow-sub">Campaigns planned, built and checked before every send.</p>
+        <ol class="flow"><li><h3>Plan</h3><p>Set the goal, audience and single action each email should drive.</p></li><li><h3>Segment</h3><p>Group your list so each message reaches the right people.</p></li><li><h3>Create</h3><p>Write the subject line, copy and call to action, and design the layout.</p></li><li><h3>Test</h3><p>Check links, formatting and mobile view, then send a test.</p></li><li><h3>Analyze</h3><p>Review opens, clicks and replies, and improve the next campaign.</p></li></ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How we work</p>
+        <h2 class="h2">From first call to <em>steady rhythm</em></h2>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Discovery call</h3><p>We talk through your business, your week and the tasks that drain the most time.</p></div>
+        <div class="step"><h3>Custom plan</h3><p>I propose a focus, a monthly hour allowance and what you can expect each week.</p></div>
+        <div class="step"><h3>Onboarding</h3><p>Access, brand details and preferences are set up once, so you never explain them twice.</p></div>
+        <div class="step"><h3>Ongoing support</h3><p>Work moves on schedule, with a short weekly update on what is done and what is next.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-alt" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Work samples</p>
+        <h2 class="h2">A look at <em>how I work</em></h2>
+        <p class="lede">Samples from my own brand and from fictional businesses, so you can see my process without exposing any client's data.</p>
+      </div>
+      <div class="samples">
+        <article class="sample">
+          <a class="sample-shot" href="samples/sop-weekly-blog-post.pdf" target="_blank" rel="noopener" aria-label="Open the Weekly Blog Post Publishing SOP (PDF)">
+            <img src="img/sample-sop.jpg" width="900" height="675" loading="lazy" alt="First page of a standard operating procedure titled Weekly Blog Post Publishing">
+          </a>
+          <div class="sample-body">
+            <p class="sample-kind">Administrative Support · SOP</p>
+            <h3>Weekly Blog Post Publishing</h3>
+            <p>A step-by-step procedure for publishing a weekly blog post for Lumen &amp; Pine Candle Co., a fictional online candle shop. Anyone on the team can follow it and get the same result every week.</p>
+            <ul class="sample-points">
+              <li>Tools, access and files checklist, with no passwords in the document</li>
+              <li>Four clear steps, from draft to scheduled post</li>
+              <li>Quality checklist and troubleshooting guide</li>
+            </ul>
+            <a class="btn btn-line" href="samples/sop-weekly-blog-post.pdf" target="_blank" rel="noopener">View the full SOP</a>
+          </div>
+        </article>
+        <article class="sample sample-flip">
+          <div class="sample-body">
+            <p class="sample-kind">Social Media Management · Content calendar</p>
+            <h3>30 Days of Content</h3>
+            <p>A full month of posts I planned in Notion for my own JEMNexaVA account. Every day has a hook, a short context line, a call to action and a format, so nothing is left to the last minute.</p>
+            <ul class="sample-points">
+              <li>Six content pillars, rotated so the feed never repeats itself</li>
+              <li>Mix of single posts, 3-slide and 5-slide carousels</li>
+              <li>Each post ends with a question or action for the reader</li>
+            </ul>
+          </div>
+          <div class="cal" aria-label="Preview of the first six days of the content calendar">
+            <div class="cal-head"><span>November</span><span>30 days · 6 pillars</span></div>
+            <ol class="cal-list"><li><span class="cal-day">Day 1</span><span class="cal-hook">You didn&#x27;t start your business to spend 15 hours a week in your inbox.</span><span class="cal-meta">Pain-Point Recognition · Single Post</span></li><li><span class="cal-day">Day 2</span><span class="cal-hook">A VA is not just someone who answers emails.</span><span class="cal-meta">Myth-Busting · Single Post</span></li><li><span class="cal-day">Day 3</span><span class="cal-hook">How I audit a client&#x27;s inbox chaos in week one.</span><span class="cal-meta">Behind-the-Scenes Process · Single Post</span></li><li><span class="cal-day">Day 4</span><span class="cal-hook">A time I felt completely overwhelmed — and what actually helped.</span><span class="cal-meta">Emotional Connection · Single Post</span></li><li><span class="cal-day">Day 5</span><span class="cal-hook">5 tasks to delegate before you &quot;can afford&quot; to.</span><span class="cal-meta">Educational Value · Single Post</span></li><li><span class="cal-day">Day 6</span><span class="cal-hook">Things I notice in the first call with a potential client.</span><span class="cal-meta">Soft Trust-Building · Single Post</span></li></ol>
+          </div>
+          <details class="cal-all">
+            <summary>See all 30 days</summary>
+            <div class="cal-scroll">
+              <table>
+                <thead><tr><th scope="col">Day</th><th scope="col">Hook</th><th scope="col">Call to action</th><th scope="col">Pillar</th><th scope="col">Format</th></tr></thead>
+                <tbody><tr><td>1</td><td>You didn&#x27;t start your business to spend 15 hours a week in your inbox.</td><td>When was the last time your inbox gave you dread instead of clarity?</td><td>Pain-Point Recognition</td><td>Single Post</td></tr><tr><td>2</td><td>A VA is not just someone who answers emails.</td><td>What did you think a VA actually did before this?</td><td>Myth-Busting</td><td>Single Post</td></tr><tr><td>3</td><td>How I audit a client&#x27;s inbox chaos in week one.</td><td>Save this if your inbox needs the same treatment.</td><td>Behind-the-Scenes Process</td><td>Single Post</td></tr><tr><td>4</td><td>A time I felt completely overwhelmed — and what actually helped.</td><td>What actually helped you, the last time you felt like this?</td><td>Emotional Connection</td><td>Single Post</td></tr><tr><td>5</td><td>5 tasks to delegate before you &quot;can afford&quot; to.</td><td>Which one&#x27;s on your plate right now?</td><td>Educational Value</td><td>Single Post</td></tr><tr><td>6</td><td>Things I notice in the first call with a potential client.</td><td>What would you say if someone asked you this today?</td><td>Soft Trust-Building</td><td>Single Post</td></tr><tr><td>7</td><td>The 3am thought every overwhelmed business owner has had.</td><td>Which one hits closest to home?</td><td>Pain-Point Recognition</td><td>Single Post</td></tr><tr><td>8</td><td>An assistant vs a systems person — they&#x27;re not the same thing.</td><td>Which one do you actually need right now?</td><td>Myth-Busting</td><td>Single Post</td></tr><tr><td>9</td><td>What a first week with a new client actually looks like.</td><td>Save this for when you&#x27;re ready to bring someone on.</td><td>Behind-the-Scenes Process</td><td>Single Post</td></tr><tr><td>10</td><td>Why I actually got into VA work — the real reason, not the LinkedIn version.</td><td>What&#x27;s your real reason for doing what you do?</td><td>Emotional Connection</td><td>Single Post</td></tr><tr><td>11</td><td>How to write a delegation-ready SOP in 10 minutes.</td><td>Save this for your next delegation.</td><td>Educational Value</td><td>5-Slide Carousel</td></tr><tr><td>12</td><td>What does working with a VA actually feel like, day to day?</td><td>Curious what this could look like for you?</td><td>Soft Trust-Building</td><td>5-Slide Carousel</td></tr><tr><td>13</td><td>Signs you&#x27;re the bottleneck in your own business.</td><td>How many of these are true for you right now?</td><td>Pain-Point Recognition</td><td>5-Slide Carousel</td></tr><tr><td>14</td><td>&quot;I&#x27;ll just do it myself, it&#x27;s faster&quot; is costing you more than you think.</td><td>What&#x27;s something you keep &quot;just doing yourself&quot;?</td><td>Myth-Busting</td><td>5-Slide Carousel</td></tr><tr><td>15</td><td>The questions I ask before I ever touch your calendar.</td><td>Save this for when you&#x27;re ready to hand it off.</td><td>Behind-the-Scenes Process</td><td>5-Slide Carousel</td></tr><tr><td>16</td><td>What I wish someone had told me before starting a business.</td><td>What do you wish someone had told you?</td><td>Emotional Connection</td><td>5-Slide Carousel</td></tr><tr><td>17</td><td>The real cost of doing a $20/hour task yourself.</td><td>Comment &quot;TIME&quot; and I&#x27;ll send you how to calculate this.</td><td>Educational Value</td><td>5-Slide Carousel</td></tr><tr><td>18</td><td>Month 1 vs Month 3 with a VA.</td><td>Save this if you&#x27;re in your month-1 season.</td><td>Soft Trust-Building</td><td>5-Slide Carousel</td></tr><tr><td>19</td><td>What burnout actually looks like for solo founders.</td><td>If this is you right now, tag someone who needs to see this.</td><td>Pain-Point Recognition</td><td>5-Slide Carousel</td></tr><tr><td>20</td><td>What people get wrong about delegating.</td><td>Follow for more myths about running a business, busted.</td><td>Myth-Busting</td><td>5-Slide Carousel</td></tr><tr><td>21</td><td>A day in the life of a VA.</td><td>Most of the value isn&#x27;t visible. It&#x27;s the fire that never started.</td><td>Behind-the-Scenes Process</td><td>3-Slide Carousel</td></tr><tr><td>22</td><td>I said yes to everything at the start.</td><td>What&#x27;s something you learned to say no to?</td><td>Emotional Connection</td><td>3-Slide Carousel</td></tr><tr><td>23</td><td>Red flags to watch for when hiring support.</td><td>The right fit protects your time. The wrong fit adds another thing to manage.</td><td>Educational Value</td><td>3-Slide Carousel</td></tr><tr><td>24</td><td>You don&#x27;t have to have it all figured out to ask for help.</td><td>You&#x27;re allowed to ask for help before you&#x27;re drowning.</td><td>Soft Trust-Building</td><td>3-Slide Carousel</td></tr><tr><td>25</td><td>You don&#x27;t need to hustle harder.</td><td>What&#x27;s one thing you could take off your plate this week?</td><td>Pain-Point Recognition</td><td>3-Slide Carousel</td></tr><tr><td>26</td><td>You don&#x27;t need to be a 7-figure business to need support.</td><td>If you&#x27;re stretched thin right now, that&#x27;s reason enough.</td><td>Myth-Busting</td><td>3-Slide Carousel</td></tr><tr><td>27</td><td>A messy workflow, cleaned up.</td><td>The work didn&#x27;t get easier. It got organized.</td><td>Behind-the-Scenes Process</td><td>3-Slide Carousel</td></tr><tr><td>28</td><td>What &quot;support&quot; means to me.</td><td>What does support mean to you?</td><td>Emotional Connection</td><td>3-Slide Carousel</td></tr><tr><td>29</td><td>VA, OBM, or just better systems? Here&#x27;s how to tell.</td><td>Not sure which one? Start with what&#x27;s repeating.</td><td>Educational Value</td><td>3-Slide Carousel</td></tr><tr><td>30</td><td>Who I&#x27;m a good fit for — and who I&#x27;m not.</td><td>If that sounds like a fit, I&#x27;d love to hear from you.</td><td>Soft Trust-Building</td><td>3-Slide Carousel</td></tr></tbody>
+              </table>
+            </div>
+          </details>
+        </article>
+        <article class="sample">
+          <figure class="sample-shot sample-static">
+            <img src="img/sample-leads.jpg" width="1330" height="493" loading="lazy" alt="Prospect list in Waalaxy showing small business owners in an Invitation plus 2 Messages campaign, with names, photos and companies blurred">
+          </figure>
+          <div class="sample-body">
+            <p class="sample-kind">Lead Generation · LinkedIn outreach</p>
+            <h3>Small Business Owner Campaign</h3>
+            <p>A LinkedIn outreach campaign I built and ran in Waalaxy for my own business, targeting small business owners. Prospect names, photos and companies are blurred to protect their privacy.</p>
+            <ol class="seq" aria-label="Campaign sequence">
+              <li><span>1</span>Personalized connection invite</li>
+              <li><span>2</span>Intro message after they accept</li>
+              <li><span>3</span>Friendly follow-up</li>
+            </ol>
+            <dl class="stats">
+              <div><dt>Accepted invites</dt><dd>29</dd></div>
+              <div><dt>Replies</dt><dd>5</dd></div>
+              <div><dt>Response rate</dt><dd>17.2%</dd></div>
+            </dl>
+            <p class="stats-note">Results from the last 30 days of the campaign.</p>
+          </div>
+        </article>
+        <article class="sample sample-flip">
+          <div class="sample-body">
+            <p class="sample-kind">Email Marketing · MailerLite</p>
+            <h3>Brand Strategy Review Campaign</h3>
+            <p>A complete email funnel I built in MailerLite for my own brand: a sign-up form, a landing page that explains the offer, and a promotional email that invites readers to request a brand strategy review.</p>
+            <ul class="sample-points">
+              <li>Email with a clear headline, benefits list and one call to action</li>
+              <li>Landing page with deliverables, FAQ and a booking link</li>
+              <li>Sign-up form connected to the subscriber list</li>
+            </ul>
+            <div class="sample-links">
+              <a class="btn btn-gold" href="https://preview.mailerlite.io/preview/2609339/emails/198312004030564210" target="_blank" rel="noopener">View the email</a>
+              <a class="btn btn-line" href="https://jesykas-workspace-iqxlqx.subscribepage.io/" target="_blank" rel="noopener">Landing page</a>
+              <a class="btn btn-line" href="https://preview.mailerlite.io/forms/2609339/197878364123432523/share" target="_blank" rel="noopener">Sign-up form</a>
+            </div>
+          </div>
+          <a class="sample-shot sample-tall" href="https://preview.mailerlite.io/preview/2609339/emails/198312004030564210" target="_blank" rel="noopener" aria-label="Open the email campaign preview">
+            <img src="img/sample-email.jpg" width="848" height="886" loading="lazy" alt="Top of the promotional email titled Refine Your Brand's Digital Footprint, with a pink and gold banner">
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="tools">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Toolbox</p>
+        <h2 class="h2">Tools I <em>work in</em></h2>
+        <p class="lede">Already using one of these? I can step into your setup without extra training time.</p>
+      </div>
+      <div class="tools"><div class="tool-group"><h3>Lead generation &amp; prospecting</h3><ul><li>Waalaxy</li><li>Apollo.io</li><li>Snov.io</li><li>LinkedIn</li></ul></div><div class="tool-group"><h3>Email marketing</h3><ul><li>MailerLite</li><li>Mailchimp</li></ul></div><div class="tool-group"><h3>Design &amp; video editing</h3><ul><li>Canva</li><li>CapCut</li><li>Adobe Premiere Pro</li></ul></div><div class="tool-group"><h3>Database &amp; workspace</h3><ul><li>Notion</li><li>xTiles</li><li>Google Docs</li><li>Google Sheets</li><li>Google Slides</li><li>Google Drive</li><li>Google Forms</li></ul></div><div class="tool-group"><h3>Projects &amp; communication</h3><ul><li>Trello</li><li>Calendly</li><li>Gmail</li><li>Slack</li><li>Zoom</li><li>Discord</li><li>WhatsApp</li></ul></div><div class="tool-group"><h3>AI tools &amp; assistants</h3><ul><li>ChatGPT</li><li>Claude</li><li>Perplexity</li></ul></div></div>
+    </div>
+  </section>
+
+  <section class="band band-alt" id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Monthly support</p>
+        <h2 class="h2">Three ways to <em>work together</em></h2>
+        <p class="lede">Simple monthly plans with a set number of hours. Prices are in US dollars.</p>
+      </div>
+      <div class="tiers">
+        <article class="tier">
+          <h3>Starter</h3>
+          <p class="for">For solo owners who need one area covered well.</p>
+          <div class="price">$110<small>/ month</small></div>
+          <div class="hours">15 hours each month</div>
+          <ul>
+            <li>Choose 1 of the 4 services</li>
+            <li>Weekly progress note</li>
+            <li>Replies on business days</li>
+            <li>Month-to-month, cancel anytime</li>
+          </ul>
+          <a class="btn btn-line" href="#contact" data-plan="Starter">Choose Starter</a>
+        </article>
+        <article class="tier pick">
+          <span class="badge">Recommended</span>
+          <h3>Growth</h3>
+          <p class="for">For growing businesses that need two areas handled together.</p>
+          <div class="price">$290<small>/ month</small></div>
+          <div class="hours">40 hours each month</div>
+          <ul>
+            <li>Choose any 2 of the 4 services</li>
+            <li>Shared task tracker</li>
+            <li>Replies on business days</li>
+            <li>Weekly check-in call</li>
+          </ul>
+          <a class="btn btn-gold" href="#contact" data-plan="Growth">Choose Growth</a>
+        </article>
+        <article class="tier">
+          <h3>Premium</h3>
+          <p class="for">For busy founders who want a dependable right hand.</p>
+          <div class="price">$580<small>/ month</small></div>
+          <div class="hours">80 hours each month</div>
+          <ul>
+            <li>Choose any 2, double the output</li>
+            <li>Priority turnaround on every task</li>
+            <li>Shared task tracker</li>
+            <li>Weekly check-in + 2 strategy calls</li>
+            <li>Monthly summary report</li>
+          </ul>
+          <a class="btn btn-line" href="#contact" data-plan="Premium">Choose Premium</a>
+        </article>
+      </div>
+      <p class="fine">The 4 services: Social Media Management · Administrative Support · Lead Generation · Email Marketing. Need a different mix of hours or services? Tell me what you have in mind and I will put together a custom plan.</p>
+    </div>
+  </section>
+
+  <section class="band about" id="about">
+    <div class="wrap">
+      <img src="img/c.jpg" width="900" height="1080" loading="lazy" alt="Jesyka, founder of JEMNexaVA, seated in a pink suit in a bright office">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2 class="h2" style="margin-block:1rem 1.4rem">Hi, I'm Jesyka. I work <em>behind the scenes</em> so you can lead.</h2>
+        <p>JEMNexaVA is a virtual assistant practice built for business owners, coaches and founders who are tired of doing everything themselves.</p>
+        <p>I take on the posting schedule, the inbox, the follow-ups and the trackers, and I keep you informed without adding to your to-do list. You get one reliable person who learns how your business runs.</p>
+        <div class="values"><div>Reliable</div><div>Organized</div><div>Consistent</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="h2">Before we <em>begin</em></h2>
+      </div>
+      <div class="faq">
+        <details open><summary>How do we get started?</summary><p>Send a short message or book a free call. We talk about what is taking your time, then I send a plan with the focus, hours and price for you to approve.</p></details>
+        <details open><summary>Which tools do you work in?</summary><p>I work in the tools you already use, and I design graphics in Canva. Tell me what your business runs on during the call.</p></details>
+        <details open><summary>Will my information stay private?</summary><p>Yes. I treat your accounts, files and client details as confidential, and I am happy to sign a confidentiality agreement if you need one.</p></details>
+        <details open><summary>What if I need more hours one month?</summary><p>Message me and we will adjust. You can move up a plan or add hours for a busy season.</p></details>
+        <details open><summary>How will I know what you are working on?</summary><p>You get a short weekly update on what is done and what is next, so you never have to chase progress.</p></details>
+        <details open><summary>How are the plans priced?</summary><p>Simple monthly plans with a set number of hours, in US dollars: Starter $110, Growth $290 and Premium $580.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band contact" id="contact">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 style="margin-block:1rem 1.4rem">Need support <em style="color:var(--gold-text)">behind the scenes?</em></h2>
+        <p class="lede">Tell me a little about your business and what you would like off your plate. I will reply with next steps.</p>
+        <div class="contact-actions">
+          <a class="btn btn-gold" href="mailto:jesykamagalladoraegonio@gmail.com">Email me</a>
+          <a class="btn btn-line" href="https://www.linkedin.com/in/jesykaegonio/" target="_blank" rel="noopener">Message on LinkedIn</a>
+          <a class="book-now" href="https://calendly.com/jesykamagalladoraegonio/new-meeting-1" target="_blank" rel="noopener">Book now
+            <span class="book-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l6 6-6 6M12 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+      <div class="reach-card">
+        <dl class="reach">
+          <div><dt>Email</dt><dd><a id="mail" href="mailto:jesykamagalladoraegonio@gmail.com">jesykamagalladoraegonio@gmail.com</a><button class="copy" type="button" data-copy="jesykamagalladoraegonio@gmail.com">Copy</button></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/jesykaegonio/" target="_blank" rel="noopener">linkedin.com/in/jesykaegonio</a></dd></div>
+        </dl>
+        <ul class="socials">
+          <li><a href="https://wa.me/639163525056" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.8A8 8 0 1 1 8 19z"/><path d="M9.2 8.6c.3 2.6 3.2 5.6 5.9 6l1-1.2-1.8-1-.9.8a5 5 0 0 1-2.3-2.4l.7-.9-.9-1.8z"/></svg>WhatsApp</a></li>
+          <li><a href="https://www.facebook.com/JMNexaVA/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M15.5 8h-1.6a1.9 1.9 0 0 0-1.9 1.9V20.5M10 12.5h5"/></svg>Facebook</a></li>
+          <li><a href="https://www.instagram.com/jemnexa.va" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/></svg>Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="tag">Support behind the scenes. Growth in front.</div>
+      <p style="margin-top:.6rem">&copy; 2026 JEMNexaVA. All rights reserved.</p>
+    </div>
+    <div>
+      <a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a><a href="https://www.linkedin.com/in/jesykaegonio/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/JMNexaVA/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/jemnexa.va" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var EMAIL = "jesykamagalladoraegonio@gmail.com";
+  // Progressive-enhancement scroll reveals: content remains visible if observer support is absent.
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    var revealGroups = [
+      ["#services .section-head", 0],
+      ["#services .service", 85],
+      ["#workflow .section-head", 0],
+      ["#workflow .flow-tabs", 0],
+      ["#process .section-head", 0],
+      ["#process .step", 90],
+      ["#work .section-head", 0],
+      ["#work .sample", 0],
+      ["#tools .section-head", 0],
+      [".tool-group", 70],
+      ["#pricing .section-head", 0],
+      ["#pricing .tier", 110],
+      ["#pricing .fine", 0],
+      ["#about .wrap > img", 0],
+      ["#about .wrap > div", 90],
+      [".band-alt .section-head", 0],
+      [".faq details", 75],
+      ["#contact .wrap > div", 0],
+      ["#contact .reach-card", 100],
+      ["footer .wrap > *", 80]
+    ];
+    var revealTargets = [];
+    revealGroups.forEach(function (group) {
+      var nodes = document.querySelectorAll(group[0]);
+      nodes.forEach(function (node, index) {
+        node.classList.add("reveal-on-scroll");
+        if (group[1]) node.style.setProperty("--reveal-delay", (index * group[1]) + "ms");
+        revealTargets.push(node);
+      });
+    });
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
+    revealTargets.forEach(function (node) { revealObserver.observe(node); });
+  }
+
+  function announceButton(btn, message) {
+    var old = btn.textContent;
+    btn.textContent = message;
+    window.setTimeout(function () { btn.textContent = old; }, 1800);
+  }
+  function copyText(text, btn, fallbackNode) {
+    function fallback() {
+      if (fallbackNode) {
+        var range = document.createRange();
+        range.selectNodeContents(fallbackNode);
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        announceButton(btn, "Select and copy");
+      } else {
+        announceButton(btn, "Copy manually");
+      }
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () { announceButton(btn, "Copied"); }, fallback);
+    } else {
+      fallback();
+    }
+  }
+
+  document.querySelectorAll("[data-copy]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      copyText(button.getAttribute("data-copy"), button, document.getElementById("mail"));
+    });
+  });
+
+  var flowTabs = Array.prototype.slice.call(document.querySelectorAll(".flow-tab"));
+  function showFlow(tab, focus) {
+    flowTabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  flowTabs.forEach(function (tab, i) {
+    tab.addEventListener("click", function () { showFlow(tab, false); });
+    tab.addEventListener("keydown", function (e) {
+      var n = null;
+      if (e.key === "ArrowRight") n = flowTabs[(i + 1) % flowTabs.length];
+      if (e.key === "ArrowLeft") n = flowTabs[(i - 1 + flowTabs.length) % flowTabs.length];
+      if (n) { e.preventDefault(); showFlow(n, true); }
+    });
+  });
+
+  var menuButton = document.querySelector(".menu-toggle");
+  var nav = document.getElementById("main-nav");
+  function closeMenu() {
+    nav.classList.remove("is-open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Open navigation menu");
+  }
+  menuButton.addEventListener("click", function () {
+    var isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!isOpen));
+    menuButton.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+    nav.classList.toggle("is-open", !isOpen);
+  });
+  nav.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", closeMenu);
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && nav.classList.contains("is-open")) {
+      closeMenu();
+      menuButton.focus();
+    }
+  });
+  window.addEventListener("resize", function () {
+    if (window.matchMedia("(min-width: 52.001rem)").matches) closeMenu();
+  });
+
+})();
+</script>
+</html>
