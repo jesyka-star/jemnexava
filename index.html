@@ -233,6 +233,45 @@ a { color: inherit; }
 .tool-group h3 { font-family: var(--font-body); font-size: .74rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-text); margin-bottom: .9rem; }
 .tool-group ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
 .tool-group li { padding: .45rem .9rem; border: 1px solid var(--line-soft); border-radius: 999px; background: var(--bg-2); font-size: .9rem; }
+.certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1.6rem; }
+.cert { display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--bg); min-width: 0; transition: transform .3s ease, border-color .3s ease; }
+.cert:hover { transform: translateY(-4px); border-color: var(--gold); }
+.cert-shot { display: block; aspect-ratio: 640 / 452; overflow: hidden; border-bottom: 1px solid var(--line); }
+.cert-shot:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+.cert-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cert-body { padding: 1.2rem 1.3rem 1.4rem; display: grid; gap: .35rem; align-content: start; }
+.cert-date { margin: 0; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-text); font-weight: 600; }
+.cert-body h3 { font-size: 1.45rem; line-height: 1.15; }
+.cert-issuer { margin: 0; font-size: .88rem; color: var(--ink); }
+.cert-note { margin: .2rem 0 0; font-size: .84rem; color: var(--ink-soft); }
+.quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1.6rem; align-items: stretch; }
+.quote { margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 1.6rem; padding: clamp(1.5rem, 3vw, 2.1rem); border: 1px solid var(--line); border-radius: 18px; background: var(--bg-2); min-width: 0; position: relative; }
+.quote::before { content: "\201C"; display: block; height: 1.6rem; margin-bottom: -.4rem; font-family: var(--font-display); font-size: 4.2rem; line-height: 1; color: var(--gold); opacity: .55; }
+.quote blockquote { margin: 0; }
+.quote blockquote p { margin: 0; font-family: var(--font-display); font-style: italic; font-size: 1.3rem; line-height: 1.45; color: var(--ink); }
+.quote figcaption { display: flex; align-items: center; gap: .9rem; padding-top: 1.2rem; border-top: 1px solid var(--line-soft); }
+.quote figcaption img { width: 3.4rem; height: 3.4rem; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex: none; }
+.quote figcaption span { display: grid; gap: .15rem; min-width: 0; }
+.quote figcaption strong { font-weight: 600; font-size: 1rem; }
+.quote figcaption small { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-text); }
+.clocks-wrap { grid-column: 1 / -1; display: grid; gap: 1.2rem; margin-top: -1rem; padding-top: clamp(1.6rem, 3vw, 2.4rem); border-top: 1px solid var(--line-soft); }
+.clocks-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .4rem 1.5rem; }
+.clocks-note { margin: 0; color: var(--ink-soft); font-size: .9rem; }
+.clocks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(0, 1fr)); gap: .8rem; }
+.clock { display: grid; gap: .45rem; align-content: start; padding: 1.1rem 1.2rem; border: 1px solid var(--line-soft); border-radius: 14px; background: var(--bg-2); min-width: 0; }
+.clock-me { grid-row: span 2; align-content: center; gap: .7rem; padding: 1.6rem; border-color: var(--gold); background: linear-gradient(160deg, var(--bg-3), var(--bg-2)); }
+.clock-city { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-text); font-weight: 600; }
+.clock-time { font-family: var(--font-body); font-weight: 500; font-size: clamp(1.25rem, 1.9vw, 1.6rem); line-height: 1; letter-spacing: .02em; font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
+.clock-me .clock-time { font-size: clamp(1.9rem, 3.4vw, 2.7rem); }
+.clock-time .sec { color: var(--gold-text); }
+.clock-time small { font-size: .62em; letter-spacing: .08em; margin-left: .3rem; color: var(--ink-soft); }
+.clock-day { font-size: .76rem; color: var(--ink-soft); }
+.clock-me .clock-day { font-size: .85rem; }
+.clock-me .pulse { display: inline-block; width: .5rem; height: .5rem; margin-right: .5rem; border-radius: 50%; background: var(--gold); vertical-align: middle; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+@media (prefers-reduced-motion: reduce) { .clock-me .pulse { animation: none; } }
+@media (max-width: 62rem) { .clocks { grid-template-columns: repeat(3, minmax(0, 1fr)); } .clock-me { grid-row: auto; grid-column: 1 / -1; } }
+@media (max-width: 36rem) { .clocks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .section-head { display: grid; gap: 1rem; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
 .services { border-top: 1px solid var(--line); }
 .service { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 1rem clamp(1.5rem, 5vw, 4rem); padding-block: clamp(1.6rem, 3.4vw, 2.6rem); border-bottom: 1px solid var(--line); }
@@ -556,6 +595,95 @@ footer a:hover { color: var(--gold-text); }
     </div>
   </section>
 
+  <section class="band band-alt" id="certifications">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Certifications</p>
+        <h2 class="h2">Training behind <em>the work</em></h2>
+        <p class="lede">Courses I have completed to keep my skills current. Select a certificate to see it in full.</p>
+      </div>
+      <div class="certs">
+        <article class="cert">
+          <a class="cert-shot" href="cert-vabar.jpg" target="_blank" rel="noopener" aria-label="View the full Freelancing Skills Program certificate">
+            <img src="cert-vabar-thumb.jpg" width="640" height="452" loading="lazy" alt="Freelancing Skills Program certificate of completion">
+          </a>
+          <div class="cert-body">
+            <p class="cert-date">September 2026</p>
+            <h3>Freelancing Skills Program</h3>
+            <p class="cert-issuer">The VA Bar</p>
+            <p class="cert-note">Social media management, lead generation, graphic design, email marketing and administrative support.</p>
+          </div>
+        </article>
+        <article class="cert">
+          <a class="cert-shot" href="cert-canva.jpg" target="_blank" rel="noopener" aria-label="View the full Canva Essentials certificate">
+            <img src="cert-canva-thumb.jpg" width="640" height="452" loading="lazy" alt="Canva Essentials certificate of completion">
+          </a>
+          <div class="cert-body">
+            <p class="cert-date">September 2026</p>
+            <h3>Canva Essentials</h3>
+            <p class="cert-issuer">Canva Design School</p>
+            <p class="cert-note">Core Canva design skills. Credential ID cc1610.</p>
+          </div>
+        </article>
+        <article class="cert">
+          <a class="cert-shot" href="cert-premiere.jpg" target="_blank" rel="noopener" aria-label="View the full Premiere Pro Masterclass certificate">
+            <img src="cert-premiere-thumb.jpg" width="640" height="452" loading="lazy" alt="Premiere Pro Masterclass certificate of completion">
+          </a>
+          <div class="cert-body">
+            <p class="cert-date">October 2026</p>
+            <h3>Premiere Pro Masterclass</h3>
+            <p class="cert-issuer">Graphics Media Training Philippines</p>
+            <p class="cert-note">18-hour, 6-day beginner to advanced video editing course.</p>
+          </div>
+        </article>
+        <article class="cert">
+          <a class="cert-shot" href="cert-asean-ai.jpg" target="_blank" rel="noopener" aria-label="View the full AI Career Readiness Training certificate">
+            <img src="cert-asean-ai-thumb.jpg" width="640" height="452" loading="lazy" alt="AI Career Readiness Training certificate of completion">
+          </a>
+          <div class="cert-body">
+            <p class="cert-date">August 2026</p>
+            <h3>AI Career Readiness Training</h3>
+            <p class="cert-issuer">ASEAN Foundation, supported by LinkedIn</p>
+            <p class="cert-note">Completed on the ASEAN Foundation learning platform.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="feedback">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Coach feedback</p>
+        <h2 class="h2">What my <em>coaches say</em></h2>
+        <p class="lede">Feedback from the coaches who reviewed my work during my virtual assistant training.</p>
+      </div>
+      <div class="quotes">
+        <figure class="quote">
+          <blockquote><p>Your dedication and commitment to completing the activity are truly commendable. I appreciate how you remained focused on delivering an organized and accurate output. … You're making steady progress, and it's great to see your confidence grow with every completed task.</p></blockquote>
+          <figcaption>
+            <img src="coach-nero.jpg" width="240" height="240" loading="lazy" alt="">
+            <span><strong>Coach Nero</strong><small>Admin Coach</small></span>
+          </figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote><p>Excellent work! You followed the lead generation process and provided relevant prospects with the required details. Keep up the good work.</p></blockquote>
+          <figcaption>
+            <img src="coach-lawrence.jpg" width="240" height="240" loading="lazy" alt="">
+            <span><strong>Coach Lawrence</strong><small>Lead Generation Coach</small></span>
+          </figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote><p>Great job wrapping up your task! Your effort and dedication really show. Take a moment to celebrate your progress. … Congrats Jesyka!</p></blockquote>
+          <figcaption>
+            <img src="coach-aaron.jpg" width="240" height="240" loading="lazy" alt="">
+            <span><strong>Coach Aaron</strong><small>LinkedIn Coach</small></span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <section class="band band-alt" id="pricing">
     <div class="wrap">
       <div class="section-head">
@@ -665,6 +793,10 @@ footer a:hover { color: var(--gold-text); }
           <li><a href="https://www.instagram.com/jemnexa.va" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/></svg>Instagram</a></li>
         </ul>
       </div>
+      <div class="clocks-wrap">
+        <div class="clocks-head"><p class="eyebrow">Working across time zones</p><p class="clocks-note">My time next to the main client time zones.</p></div>
+        <ul class="clocks" aria-label="Current time in my time zone and six client time zones"><li class="clock clock-me" data-tz="Asia/Manila" data-region="UTC+8"><span class="clock-city"><span class="pulse" aria-hidden="true"></span>My time</span><span class="clock-time">--:--:--</span><span class="clock-day">UTC+8</span></li><li class="clock" data-tz="America/New_York" data-region="New York"><span class="clock-city">US Eastern</span><span class="clock-time">--:--:--</span><span class="clock-day">New York</span></li><li class="clock" data-tz="America/Chicago" data-region="Chicago"><span class="clock-city">US Central</span><span class="clock-time">--:--:--</span><span class="clock-day">Chicago</span></li><li class="clock" data-tz="America/Denver" data-region="Denver"><span class="clock-city">US Mountain</span><span class="clock-time">--:--:--</span><span class="clock-day">Denver</span></li><li class="clock" data-tz="America/Los_Angeles" data-region="Los Angeles"><span class="clock-city">US Pacific</span><span class="clock-time">--:--:--</span><span class="clock-day">Los Angeles</span></li><li class="clock" data-tz="Europe/London" data-region="London"><span class="clock-city">United Kingdom</span><span class="clock-time">--:--:--</span><span class="clock-day">London</span></li><li class="clock" data-tz="Australia/Sydney" data-region="Sydney"><span class="clock-city">Australia</span><span class="clock-time">--:--:--</span><span class="clock-day">Sydney</span></li></ul>
+      </div>
     </div>
   </section>
 </main>
@@ -699,6 +831,10 @@ footer a:hover { color: var(--gold-text); }
       ["#work .sample", 0],
       ["#tools .section-head", 0],
       [".tool-group", 70],
+      ["#certifications .section-head", 0],
+      [".cert", 80],
+      ["#feedback .section-head", 0],
+      [".quote", 90],
       ["#pricing .section-head", 0],
       ["#pricing .tier", 110],
       ["#pricing .fine", 0],
@@ -708,6 +844,7 @@ footer a:hover { color: var(--gold-text); }
       [".faq details", 75],
       ["#contact .wrap > div", 0],
       ["#contact .reach-card", 100],
+      [".clock", 70],
       ["footer .wrap > *", 80]
     ];
     var revealTargets = [];
@@ -780,6 +917,25 @@ footer a:hover { color: var(--gold-text); }
       if (n) { e.preventDefault(); showFlow(n, true); }
     });
   });
+
+  var clocks = Array.prototype.slice.call(document.querySelectorAll(".clock"));
+  function tickClocks() {
+    var now = new Date();
+    clocks.forEach(function (el) {
+      var tz = el.getAttribute("data-tz");
+      try {
+        var t = {};
+        new Intl.DateTimeFormat("en-US", { timeZone: tz, hour: "numeric", minute: "2-digit", second: "2-digit", hour12: true }).formatToParts(now).forEach(function (p) { t[p.type] = p.value; });
+        el.querySelector(".clock-time").innerHTML = t.hour + ":" + t.minute + '<span class="sec">:' + t.second + "</span><small>" + (t.dayPeriod || "") + "</small>";
+        var day = new Intl.DateTimeFormat("en-US", { timeZone: tz, weekday: "short", month: "short", day: "numeric" }).format(now);
+        el.querySelector(".clock-day").textContent = day + " \u00b7 " + el.getAttribute("data-region");
+      } catch (e) { /* keep the placeholder if this browser lacks the time zone */ }
+    });
+  }
+  if (clocks.length) {
+    tickClocks();
+    window.setTimeout(function () { tickClocks(); window.setInterval(tickClocks, 1000); }, 1000 - (Date.now() % 1000));
+  }
 
   var menuButton = document.querySelector(".menu-toggle");
   var nav = document.getElementById("main-nav");
